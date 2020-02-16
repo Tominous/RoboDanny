@@ -568,7 +568,7 @@ class Tournament(commands.Cog):
         base = datetime.datetime.utcnow() + datetime.timedelta(hours=1)
         durations = (
             (base, 0),
-            # (base - datetime.timedelta(hours=1), 60),
+             (base - datetime.timedelta(hours=1), 60),
             (base - datetime.timedelta(minutes=30), 30),
             (base - datetime.timedelta(minutes=15), 15),
             (base - datetime.timedelta(minutes=5), 5),
@@ -683,9 +683,9 @@ class Tournament(commands.Cog):
         await announcement.send(msg)
 
     async def prepare_participant_cache(self, *, connection=None):
-        # participant_id: [ParticipantInfo]
+         participant_id: [ParticipantInfo]
         cache = {}
-        # member_id: participant_id
+         member_id: participant_id
         member_cache = {}
 
         participants = await self.challonge.participants()
@@ -800,7 +800,7 @@ class Tournament(commands.Cog):
                 await asyncio.sleep(0.5)
 
                 to_beat = (best_of // 2) + 1
-                msg =  "@here Please use this channel to communicate!\n" \
+                msg =  "**@here** Please use this channel to communicate!\n" \
                        "When your match is complete, **both teams must report their own scores**.\n" \
                       f"Reporting your score is done via the `?score` command. For example: `?score {to_beat}`\n" \
                        "**The ?score command can only be done in this channel.**"
@@ -1014,7 +1014,7 @@ class Tournament(commands.Cog):
         round_info = self.config.get('round_info', {})
         info = round_info.get(str(channel.id))
         if info is None:
-            return await ctx.send('Could not get round info for this channel.')
+            return await ctx.send('Could not get round information for this channel.')
 
         player1_id = info['player1_id']
         player2_id = info['player2_id']
@@ -1336,7 +1336,7 @@ class Tournament(commands.Cog):
                 return value.id
             return False
 
-        member_msg = "What is the member's name? You must use name#tag. e.g. Danny#0007"
+        member_msg = "What is the member's name? You must use name#tag. E.G. `Danny#0007`"
         ask_member_msg = "Do you have any other team members in the server? (say yes or no)"
         members = {}
         for i in range(7):
