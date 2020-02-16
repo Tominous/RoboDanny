@@ -204,8 +204,8 @@ async def migrate_tags(pool, client):
     for location, obj in tags.items():
         location_id = None if not location.isdigit() else int(location)
 
-        # if client.get_guild(location_id) is None:
-            # continue
+         if client.get_guild(location_id) is None:
+             continue
 
         for name, data in obj.items():
             if '__tag_alias__' not in data:
@@ -276,11 +276,11 @@ async def migrate_stars(pool, client):
         def to_record(self):
             return tuple(getattr(self, attr) for attr in self.__slots__)
 
-        # def __hash__(self):
-        #     return hash(self.message_id)
+         def __hash__(self):
+             return hash(self.message_id)
 
-        # def __eq__(self, o):
-        #     return isinstance(o, Entry) and o.message_id == self.message_id
+         def __eq__(self, o):
+             return isinstance(o, Entry) and o.message_id == self.message_id
 
     class Starrer:
         __slots__ = ('author_id', 'entry_id')
