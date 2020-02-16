@@ -899,7 +899,7 @@ class Stars(commands.Cog):
                          for i, r in enumerate(records))
 
     async def star_guild_stats(self, ctx):
-        e = discord.Embed(title='Server Starboard Stats')
+        e = discord.Embed(title='Server Starboard Statistics')
         e.timestamp = ctx.starboard.channel.created_at
         e.set_footer(text='Adding stars since')
 
