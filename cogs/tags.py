@@ -132,17 +132,17 @@ class Tags(commands.Cog):
             else:
                 await ctx.send(error)
 
-    # @cache.cache()
-    # async def get_tag_config(self, guild_id, *, connection=None):
-    #     # tag config is stored as a special server-wide tag, 'config'
-    #     # this 'config' value is serialised as JSON in the content
+     @cache.cache()
+     async def get_tag_config(self, guild_id, *, connection=None):
+         # tag config is stored as a special server-wide tag, 'config'
+         # this 'config' value is serialised as JSON in the content
 
-    #     query = """SELECT content FROM tags WHERE name = 'config' AND location_id = $1;"""
-    #     con = connection if connection else self.bot.pool
-    #     record = await con.fetchrow(query, guild_id)
-    #     if record is None:
-    #         return TagConfig({})
-    #     return TagConfig(json.loads(record['content']))
+         query = """SELECT content FROM tags WHERE name = 'config' AND location_id = $1;"""
+         con = connection if connection else self.bot.pool
+         record = await con.fetchrow(query, guild_id)
+         if record is None:
+             return TagConfig({})
+         return TagConfig(json.loads(record['content']))
 
     async def get_possible_tags(self, guild, *, connection=None):
         """Returns a list of Records of possible tags that the guild can execute.
