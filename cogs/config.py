@@ -89,7 +89,7 @@ class ResolvedCommandPermissions:
 
         self._lookup = defaultdict(self._Entry)
 
-        # channel_id: { allow: [commands], deny: [commands] }
+         channel_id: { allow: [commands], deny: [commands] }
 
         for name, channel_id, whitelist in records:
             entry = self._lookup[channel_id]
