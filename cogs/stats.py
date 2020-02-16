@@ -665,8 +665,8 @@ class Stats(commands.Cog):
         self._clear_gateway_data()
 
     def add_record(self, record):
-        # if self.bot.config.debug:
-        #     return
+         if self.bot.config.debug:
+             return
         self._gateway_queue.put_nowait(record)
 
     async def notify_gateway_status(self, record):
